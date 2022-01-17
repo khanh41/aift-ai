@@ -1,5 +1,5 @@
-from app.ml.data_loader import load_image
-from app.ml.trainers.push_up import PushUpTrainer
+from data_loader import load_image
+from trainers.push_up import PushUpTrainer
 
 trainer = PushUpTrainer()
 

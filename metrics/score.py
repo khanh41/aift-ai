@@ -2,7 +2,7 @@ import math
 
 import numpy as np
 
-from app.utils.constants import ANGLE_TO_CALCULATE
+from utils.constants import ANGLE_TO_CALCULATE
 
 
 class ScoreAngleCalculate:

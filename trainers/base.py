@@ -1,6 +1,6 @@
-from app.ml.base_model.movenet import movenet
-from app.ml.figures.draw_keypoints import keypoints_and_edges_for_display
-from app.ml.preprocessing import preprocessing_image_movenet
+from base_model.movenet import movenet
+from figures.draw_keypoints import keypoints_and_edges_for_display
+from preprocessing import preprocessing_image_movenet
 
 
 class BaseTrainer(object):
