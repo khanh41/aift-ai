@@ -1,12 +1,12 @@
 import numpy as np
 import tensorflow as tf
 
-from app.ml.data_loader import load_image
-from app.ml.figures.draw_keypoints import draw_prediction_on_image
-from app.ml.figures.draw_keypoints import keypoints_and_edges_for_display
-from app.ml.metrics.score import ScoreAngleCalculate
-from app.ml.trainers.base import BaseTrainer
-from app.ml.utils import calculateAngle, pillow_convert_base64
+from data_loader import load_image
+from figures.draw_keypoints import draw_prediction_on_image
+from figures.draw_keypoints import keypoints_and_edges_for_display
+from metrics.score import ScoreAngleCalculate
+from trainers.base import BaseTrainer
+from utils import calculateAngle, pillow_convert_base64
 
 
 class PushUpTrainer(BaseTrainer):

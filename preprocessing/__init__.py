@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-from app.ml.base_model.movenet import input_size
+from base_model.movenet import input_size
 
 
 def preprocessing_image_movenet(image):

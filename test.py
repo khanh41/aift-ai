@@ -4,9 +4,9 @@ import numpy as np
 import tensorflow as tf
 from matplotlib import pyplot as plt
 
-from app.ml.base_model.movenet import movenet, input_size
-from app.ml.data_loader import load_image
-from app.ml.figures.draw_keypoints import draw_prediction_on_image, keypoints_and_edges_for_display
+from base_model.movenet import movenet, input_size
+from data_loader import load_image
+from figures.draw_keypoints import draw_prediction_on_image, keypoints_and_edges_for_display
 
 now = time.time()
 image = load_image("app/ml/base_model/images/pushup_1.jpg")
