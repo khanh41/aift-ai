@@ -21,4 +21,4 @@ RUN pip install poetry==1.1 && \
 COPY . ./
 
 EXPOSE 50051
-CMD ["python", "server.py"]
+CMD ["poetry", "run", "python", "server.py"]
