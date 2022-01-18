@@ -37,7 +37,6 @@ class PushUpTrainer(BaseTrainer):
 
         output_overlay = self._draw_prediction(output_overlay, keypoint_locs, (73, 235, 52))
 
-        output_overlay = output_overlay[:, :, ::-1]
         return pillow_convert_base64(output_overlay)
 
     def _get_keypoints_std(self):
@@ -60,3 +59,6 @@ class PushUpTrainer(BaseTrainer):
 
         output_overlay = draw_prediction_on_image(image, keypoint_locs, [6, 8, 10], color)
         return output_overlay
+
+
+trainer = PushUpTrainer()
