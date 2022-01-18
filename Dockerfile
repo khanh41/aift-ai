@@ -13,8 +13,10 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install python3 python3-pip build-essential cmake pkg-config libx11-dev libatlas-base-dev libgtk-3-dev libboost-python-dev -y
 
-COPY requirements.txt ./
-RUN pip install -r requirements.txt
+COPY poetry.lock pyproject.toml ./
+RUN pip install poetry==1.1 && \
+    poetry config virtualenvs.in-project true && \
+    poetry install --no-dev
 
 COPY . ./
 
