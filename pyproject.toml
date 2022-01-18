@@ -6,7 +6,7 @@ authors = ["Khánh Pluto"]
 license = "Khánh Pluto"
 
 [tool.poetry.dependencies]
-python = "3.7"
+python = "^3.7"
 python-slugify = "^4.0"
 Unidecode = "^1.1"
 loguru = "^0.5.1"
