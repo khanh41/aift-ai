@@ -23,4 +23,4 @@ jobs:
         CI_DEV_SSH_HOST: ${{ secrets.CI_DEV_SSH_HOST }}
       run: |
         rsync -ahrz --exclude-from '.dockerignore' -e "sudo ssh -i id_rsa.txt -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" ./ $CI_DEV_SSH_USER@$CI_DEV_SSH_HOST:aift-ai
-        sudo ssh -i id_rsa.txt -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $CI_DEV_SSH_USER@$CI_DEV_SSH_HOST "cd aift-ai && sudo docker build -t aift-ai . && docker run -it --name aift_ai_container -p 50051:50051 -d aift-ai"
+        sudo ssh -i id_rsa.txt -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $CI_DEV_SSH_USER@$CI_DEV_SSH_HOST "cd aift-ai && sudo docker build -t aift-ai . && sudo docker run -it --name aift_ai_container -p 50051:50051 -d aift-ai"
