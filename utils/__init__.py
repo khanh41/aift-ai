@@ -58,7 +58,7 @@ def base64_img(image, convert_color=False):
 
 
 def pillow_convert_base64(image):
-    image = Image.fromarray(np.array(image))
+    image = Image.fromarray(image.astype(np.uint8))
     buffered = io.BytesIO()
     image.save(buffered, format="JPEG")
     img_str = base64.b64encode(buffered.getvalue())
