@@ -3,6 +3,7 @@ import io
 import math
 
 import numpy as np
+import requests
 from PIL import Image
 from cv2 import cv2
 
@@ -64,3 +65,11 @@ def pillow_convert_base64(image):
     img_str = base64.b64encode(buffered.getvalue())
     img_str = str(img_str)[2:-1]
     return img_str
+
+
+def read_image_from_url(url):
+    response = requests.get(url)
+    img = Image.open(io.BytesIO(response.content))
+    img = np.array(img)
+    img = img[:, :, :3]
+    return img[:, :, ::-1]

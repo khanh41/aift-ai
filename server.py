@@ -13,7 +13,7 @@ from ops.grpc import infer_pb2_grpc, infer_pb2, infer
 class CalculatorServicer(infer_pb2_grpc.ExercisePredictServicer):
     def Inference(self, request, context):
         response = infer_pb2.ImgBase64()
-        response.value = infer.inference(request.img_origin)
+        response.img_origin = infer.inference(request.exercise_name, request.img_origin)
         return response
 
 

@@ -8,3 +8,5 @@ ANGLE_TO_CALCULATE = (
     ((10, 9), (10, 11)),  # DAU GOI TRAI
     ((13, 12), (13, 14)),  # DAU GOI PHAI
 )
+
+FIREBASE_IMAGE_URL = lambda x: f"https://firebasestorage.googleapis.com/v0/b/aift-b7b2c.appspot.com/o/{x}.jpg?alt=media"

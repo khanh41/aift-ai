@@ -4,6 +4,11 @@ message ImgBase64 {
     string img_origin = 1;
 }
 
+message ExercisePredictRequest {
+    string img_origin = 1;
+    string exercise_name = 2;
+}
+
 service ExercisePredict {
-    rpc Inference(ImgBase64) returns (ImgBase64) {}
+    rpc Inference(ExercisePredictRequest) returns (ImgBase64) {}
 }
