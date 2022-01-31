@@ -7,6 +7,8 @@ import requests
 from PIL import Image
 from cv2 import cv2
 
+from utils.constants import BACKEND_URL
+
 
 def calculateAngle(landmark1, landmark2, landmark3):
     """
@@ -73,3 +75,23 @@ def read_image_from_url(url):
     img = np.array(img)
     img = img[:, :, :3]
     return img[:, :, ::-1]
+
+
+def get_all_exercise():
+    print("Get config...")
+    response = requests.get(BACKEND_URL + "/admin/exercise/").json()['data']
+
+    url_search = BACKEND_URL + '/admin/exercise-trainer/search/'
+    configs_dict = {}
+    step_dict = {}
+    for data in response:
+        response = requests.get(url_search + data['id']).json()
+        if response['status_code'] == 200:
+            step_dict[data['name']] = data['numStep']
+            configs_dict[data['name']] = response['data']['angleConfig']
+
+    return configs_dict, step_dict
+
+
+def get_exercise_code(exercise_name, num_step):
+    return exercise_name.lower().replace(' ', '') + str(num_step)

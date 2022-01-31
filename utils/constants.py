@@ -1,3 +1,5 @@
+from pathlib import Path
+
 ANGLE_TO_CALCULATE = (
     ((2, 1), (2, 3)),  # VAI TRAI
     ((5, 1), (5, 6)),  # VAI PHAI
@@ -10,3 +12,7 @@ ANGLE_TO_CALCULATE = (
 )
 
 FIREBASE_IMAGE_URL = lambda x: f"https://firebasestorage.googleapis.com/v0/b/aift-b7b2c.appspot.com/o/{x}.jpg?alt=media"
+
+BACKEND_URL = "http://localhost:8088/api"
+
+ROOT_PATH = str(Path(__file__).parent.parent)

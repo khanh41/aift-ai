@@ -1,14 +1,27 @@
 syntax = "proto3";
 
-message ImgBase64 {
-    string img_origin = 1;
+message Param1Request {
+  string param_1 = 1;
 }
 
-message ExercisePredictRequest {
-    string img_origin = 1;
-    string exercise_name = 2;
+message Param2Request {
+  string param_1 = 1;
+  string param_2 = 2;
+}
+message Param3Request {
+  string param_1 = 1;
+  string param_2 = 2;
+  string param_3 = 3;
 }
 
-service ExercisePredict {
-    rpc Inference(ExercisePredictRequest) returns (ImgBase64) {}
+service ExerciseImagePredict {
+  rpc ImageInference(Param3Request) returns (Param1Request) {}
+}
+
+service ExerciseVideoPredict {
+  rpc VideoInference(Param2Request) returns (Param1Request) {}
+}
+
+service UpdateDataConfig {
+  rpc UpdateConfig(Param1Request) returns (Param1Request) {}
 }
