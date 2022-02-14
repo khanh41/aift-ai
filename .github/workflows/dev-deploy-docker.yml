@@ -2,7 +2,7 @@ name: Deploy Azure VM
 
 on:
   push:
-    branches: [ main ]
+    branches: [ mains ]
 
 jobs:
 
