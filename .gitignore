@@ -8,6 +8,7 @@ resources/**
 
 .env
 *.jpg
+*.png
 # Created by https://www.toptal.com/developers/gitignore/api/pycharm,python,jupyternotebooks,vscode,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=pycharm,python,jupyternotebooks,vscode,visualstudiocode
 
