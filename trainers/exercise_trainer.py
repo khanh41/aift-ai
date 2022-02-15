@@ -37,10 +37,10 @@ class Trainer(BaseTrainer):
             return pillow_convert_base64(display_image[:, :, ::-1])
         return display_image
 
-    @staticmethod
-    def read_image_from_url_by_exercise_name(exercise_name: str):
-        print(FIREBASE_IMAGE_URL(exercise_name))
-        return read_image_from_url(FIREBASE_IMAGE_URL(exercise_name))
+    def read_image_from_url_by_exercise_name(self, exercise_name: str):
+        if exercise_name not in self.actual_images.keys():
+            self.actual_images[exercise_name] = read_image_from_url(FIREBASE_IMAGE_URL(exercise_name))
+        return self.actual_images[exercise_name]
 
     def get_angle_config(self, actual_image, points_selected):
         keypoint_locs = self.get_keypoints(actual_image)

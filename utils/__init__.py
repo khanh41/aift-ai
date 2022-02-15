@@ -4,6 +4,7 @@ import math
 
 import numpy as np
 import requests
+import tensorflow as tf
 from PIL import Image
 from cv2 import cv2
 
@@ -70,11 +71,11 @@ def pillow_convert_base64(image):
 
 
 def read_image_from_url(url):
-    response = requests.get(url)
-    img = Image.open(io.BytesIO(response.content))
-    img = np.array(img)
-    img = img[:, :, :3]
-    return img[:, :, ::-1]
+    image_path = tf.keras.utils.get_file(url[url.find('.com/o/') + 7: url.find('.jpg') + 4],
+                                         origin=url)
+    image = tf.io.read_file(image_path)
+    image = tf.image.decode_jpeg(image)
+    return tf.convert_to_tensor(image[:, :, :3])
 
 
 def get_all_exercise():
