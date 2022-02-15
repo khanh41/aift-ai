@@ -16,3 +16,6 @@ FIREBASE_IMAGE_URL = lambda x: f"https://firebasestorage.googleapis.com/v0/b/aif
 BACKEND_URL = "http://localhost:8088/api"
 
 ROOT_PATH = str(Path(__file__).parent.parent)
+
+POINTS_SELECTED = [[6, 8, 10], [8, 6, 12], [6, 12, 14], [12, 14, 16],
+                   [5, 7, 9], [7, 5, 11], [5, 11, 13], [11, 13, 15]]
