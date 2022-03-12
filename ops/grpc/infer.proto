@@ -15,7 +15,7 @@ message Param3Request {
 }
 
 service ExerciseImagePredict {
-  rpc ImageInference(Param3Request) returns (Param1Request) {}
+  rpc ImageInference(Param3Request) returns (Param2Request) {}
 }
 
 service ExerciseVideoPredict {

@@ -19,6 +19,7 @@ class Trainer(BaseTrainer):
             # keypoints_predict = DataPreprocessing().affine_transform(keypoint_locs1, keypoint_locs2)
             _angle_config = angle_config[POINTS_SELECTED.index(points_selected)]
             angle_predict = self.get_angle(keypoint_locs[points_selected])
+            scores.append(ScoreAngleCalculate.score_calculate)
             if abs(_angle_config - angle_predict) > 60:
                 raise Exception('Wrong direction')
 
@@ -29,8 +30,8 @@ class Trainer(BaseTrainer):
             display_image = self.draw_prediction(display_image, keypoint_locs, points_selected, (73, 235, 52))
 
         if return_base64:
-            return pillow_convert_base64(display_image[:, :, ::-1])
-        return display_image
+            return pillow_convert_base64(display_image[:, :, ::-1]), sum(scores) / len(scores)
+        return display_image, sum(scores) / len(scores)
 
     def read_image_from_url_by_exercise_name(self, exercise_name: str):
         if exercise_name not in self.actual_images.keys():
