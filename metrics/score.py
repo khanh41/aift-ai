@@ -9,11 +9,14 @@ class ScoreAngleCalculate:
     def __init__(self) -> None:
         pass
 
-    def score_calculate(self, angle_model, angle_input):
-        score = []
-        for i in range(len(angle_model)):
-            score.append(1 - abs((angle_model[i] - angle_input[i]) / 180))
-        return np.array(score)
+    @staticmethod
+    def score_calculate(angle_model, angle_input):
+        score = int(30 - abs((angle_model - angle_input)) / 4)
+        if score > 5:
+            score = 5
+        elif score < 0:
+            score = 0
+        return score
 
     def angle_pose(self, model_features):
         angle_model = []
@@ -32,7 +35,8 @@ class ScoreAngleCalculate:
         dot_product = np.dot(unit_vector_1, unit_vector_2)
         return np.arccos(dot_product)
 
-    def find_new_point(self, vector_a, vector_c, alpha, operator):
+    @staticmethod
+    def find_new_point(vector_a, vector_c, alpha, operator):
         alpha = alpha * 3.14 / 180
         a1, a2 = vector_a
         c1, c2 = vector_c
@@ -48,7 +52,7 @@ class ScoreAngleCalculate:
         C = C1 ** 2 / A1 ** 2 - C0
         DENTA = B ** 2 - 4 * A * C
 
-        B2 = (-B + operator * math.sqrt(DENTA)) / (2 * A)
+        B2 = (-B - operator * math.sqrt(DENTA)) / (2 * A)
         B1 = (C1 - B2 * A2) / A1
 
         b1 = B1 + a1

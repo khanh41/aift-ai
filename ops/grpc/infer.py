@@ -6,8 +6,8 @@ from utils import stringToRGB
 
 def image_inference(exercise_code, exercise_name, img_origin):
     img = stringToRGB(img_origin)
-    response = exercise_detect.detect_image(exercise_code, exercise_name, img)
-    return response
+    response, score = exercise_detect.detect_image(exercise_code, exercise_name, img)
+    return response, str(score)
 
 
 def video_inference(exercise_name, user_video_path):
