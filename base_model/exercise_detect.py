@@ -22,6 +22,10 @@ class ExerciseDetection:
             for num_step in range(trainer.num_step[exercise_name]):
                 exercise_code = get_exercise_code(exercise_name, num_step + 1)
                 actual_image = trainer.read_image_from_url_by_exercise_name(exercise_code)
+                if actual_image.shape[0] > 1000:
+                    width, height = actual_image.shape[0:2]
+                    scale = width // 1000
+                    actual_image = cv2.resize(actual_image, (height // scale, width // scale))
 
                 angle_list = []
                 for point_selected in POINTS_SELECTED:
@@ -53,12 +57,12 @@ class ExerciseDetection:
             if count_frame % 20 == 0:
                 try:
                     now = time.time()
-                    img_clf = self.similarity_angle_config(exercise_name, image)
+                    img_clf = self.similarity_angle_config(exercise_name, image[:, :, ::-1])
                     print(time.time() - now)
                     if img_clf != -1:
                         exercise_code = get_exercise_code(exercise_name, img_clf)
-                        image = self.detect_image(exercise_code, exercise_name, image, False)
-                        for i in range(8):
+                        image, _ = self.detect_image(exercise_code, exercise_name, image, False)
+                        for i in range(15):
                             out.write(image.astype(np.uint8))
                 except:
                     pass
@@ -70,10 +74,11 @@ class ExerciseDetection:
         out.release()
         self.remove_old_video()
 
+        print("Done")
         return response_path
 
     def detect_image(self, exercise_code, exercise_name, image, return_base64=True):
-        angle_config = self.angle_config[exercise_name][int(exercise_code[-1])-1]
+        angle_config = self.angle_config[exercise_name][int(exercise_code[-1]) - 1]
         return trainer.predict(exercise_name, image, angle_config, return_base64)
 
     def similarity_angle_config(self, exercise_name, image):
