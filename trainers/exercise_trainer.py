@@ -28,11 +28,11 @@ class Trainer(BaseTrainer):
             index_select = POINTS_SELECTED.index(points_selected)
             _angle_config = angle_config[index_select]
             angle_predict = self.get_angle(keypoint_locs[points_selected])
-            scores.append(ScoreAngleCalculate.score_calculate)
+            scores.append(ScoreAngleCalculate.score_calculate(_angle_config, angle_predict))
             if abs(_angle_config - angle_predict) > 60:
                 raise Exception('Wrong direction')
 
-            keypoint_locs[points_selected[[SELECT_POINT[index_select]]]] = ScoreAngleCalculate.find_new_point(
+            keypoint_locs[points_selected[SELECT_POINT[index_select]]] = ScoreAngleCalculate.find_new_point(
                 keypoint_locs[points_selected[1]].copy(),
                 keypoint_locs[points_selected[SELECT_POINT[index_select]]].copy(),
                 (_angle_config - angle_predict), 1)

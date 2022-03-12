@@ -12,7 +12,7 @@ from ops.grpc import infer_pb2_grpc, infer_pb2, infer
 
 class ImagePredictServicer(infer_pb2_grpc.ExerciseImagePredictServicer):
     def ImageInference(self, request, context):
-        response = infer_pb2.Param1Request()
+        response = infer_pb2.Param2Request()
         response.param_1, response.param_2 = infer.image_inference(request.param_1,
                                                                    request.param_2,
                                                                    request.param_3)

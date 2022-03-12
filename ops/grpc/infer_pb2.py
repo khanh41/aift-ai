@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x14ops/grpc/infer.proto\" \n\rParam1Request\x12\x0f\n\x07param_1\x18\x01 \x01(\t\"1\n\rParam2Request\x12\x0f\n\x07param_1\x18\x01 \x01(\t\x12\x0f\n\x07param_2\x18\x02 \x01(\t\"B\n\rParam3Request\x12\x0f\n\x07param_1\x18\x01 \x01(\t\x12\x0f\n\x07param_2\x18\x02 \x01(\t\x12\x0f\n\x07param_3\x18\x03 \x01(\t2J\n\x14\x45xerciseImagePredict\x12\x32\n\x0eImageInference\x12\x0e.Param3Request\x1a\x0e.Param1Request\"\x00\x32J\n\x14\x45xerciseVideoPredict\x12\x32\n\x0eVideoInference\x12\x0e.Param2Request\x1a\x0e.Param1Request\"\x00\x32\x44\n\x10UpdateDataConfig\x12\x30\n\x0cUpdateConfig\x12\x0e.Param1Request\x1a\x0e.Param1Request\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x14ops/grpc/infer.proto\" \n\rParam1Request\x12\x0f\n\x07param_1\x18\x01 \x01(\t\"1\n\rParam2Request\x12\x0f\n\x07param_1\x18\x01 \x01(\t\x12\x0f\n\x07param_2\x18\x02 \x01(\t\"B\n\rParam3Request\x12\x0f\n\x07param_1\x18\x01 \x01(\t\x12\x0f\n\x07param_2\x18\x02 \x01(\t\x12\x0f\n\x07param_3\x18\x03 \x01(\t2J\n\x14\x45xerciseImagePredict\x12\x32\n\x0eImageInference\x12\x0e.Param3Request\x1a\x0e.Param2Request\"\x00\x32J\n\x14\x45xerciseVideoPredict\x12\x32\n\x0eVideoInference\x12\x0e.Param2Request\x1a\x0e.Param1Request\"\x00\x32\x44\n\x10UpdateDataConfig\x12\x30\n\x0cUpdateConfig\x12\x0e.Param1Request\x1a\x0e.Param1Request\"\x00\x62\x06proto3'
 )
 
 
@@ -185,7 +185,7 @@ _EXERCISEIMAGEPREDICT = _descriptor.ServiceDescriptor(
     index=0,
     containing_service=None,
     input_type=_PARAM3REQUEST,
-    output_type=_PARAM1REQUEST,
+    output_type=_PARAM2REQUEST,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
