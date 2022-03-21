@@ -11,7 +11,7 @@ class ScoreAngleCalculate:
 
     @staticmethod
     def score_calculate(angle_model, angle_input):
-        score = int(30 - abs((angle_model - angle_input)) / 4)
+        score = round((30 - abs((angle_model - angle_input))) / 5)
         if score > 5:
             score = 5
         elif score < 0:

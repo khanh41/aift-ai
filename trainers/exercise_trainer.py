@@ -32,10 +32,11 @@ class Trainer(BaseTrainer):
             if abs(_angle_config - angle_predict) > 60:
                 raise Exception('Wrong direction')
 
-            keypoint_locs[points_selected[SELECT_POINT[index_select]]] = ScoreAngleCalculate.find_new_point(
-                keypoint_locs[points_selected[1]].copy(),
-                keypoint_locs[points_selected[SELECT_POINT[index_select]]].copy(),
-                (_angle_config - angle_predict), 1)
+            if abs(_angle_config - angle_predict) > 1:
+                keypoint_locs[points_selected[SELECT_POINT[index_select]]] = ScoreAngleCalculate.find_new_point(
+                    keypoint_locs[points_selected[1]].copy(),
+                    keypoint_locs[points_selected[SELECT_POINT[index_select]]].copy(),
+                    (_angle_config - angle_predict), 1)
 
             display_image = self.draw_prediction(display_image, keypoint_locs, points_selected, (73, 235, 52))
 
